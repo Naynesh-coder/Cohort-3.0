@@ -1,0 +1,646 @@
+/* =========================================
+   FinTrack Pro - Styles
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-income: #16a34a;
+  --color-expense: #dc2626;
+
+  --color-bg: #f4f5fb;
+  --color-card: #ffffff;
+  --color-text: #1e1e2d;
+  --color-text-soft: #6b7280;
+  --color-border: #e5e7eb;
+}
+
+body.dark {
+  --color-bg: #12121c;
+  --color-card: #1b1b29;
+  --color-text: #f1f1f6;
+  --color-text-soft: #9ca3af;
+  --color-border: #2c2c3d;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-border);
+}
+
+.btn-danger {
+  background-color: var(--color-expense);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* =========================================
+   Auth pages (Login / Register)
+   ========================================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #eef0ff 0%, #f4f5fb 100%);
+}
+
+body.dark .auth-page {
+  background: linear-gradient(135deg, #16162a 0%, #12121c 100%);
+}
+
+.auth-box {
+  background-color: var(--color-card);
+  border-radius: 14px;
+  padding: 40px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.auth-logo {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.auth-logo span {
+  color: var(--color-primary);
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  margin-top: 6px;
+  margin-bottom: 24px;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 16px;
+  color: var(--color-text-soft);
+}
+
+/* =========================================
+   Form fields (shared across the app)
+   ========================================= */
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 14px;
+  color: var(--color-text-soft);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-error {
+  color: var(--color-expense);
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 16px;
+}
+
+form button[type="submit"] {
+  margin-top: 22px;
+}
+
+/* =========================================
+   Navbar
+   ========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background-color: var(--color-card);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-logo {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.navbar-logo span {
+  color: var(--color-primary);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: var(--color-text-soft);
+  font-weight: 600;
+  font-size: 14px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================================
+   Page sections
+   ========================================= */
+
+.page-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.welcome-line h2 {
+  font-size: 22px;
+}
+
+.welcome-line p {
+  color: var(--color-text-soft);
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 22px;
+}
+
+/* =========================================
+   Summary cards
+   ========================================= */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background-color: var(--color-card);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+}
+
+.card-label {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-value {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.income-text {
+  color: var(--color-income);
+}
+
+.expense-text {
+  color: var(--color-expense);
+}
+
+/* =========================================
+   Chart card
+   ========================================= */
+
+.chart-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-card h3 {
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   Table card
+   ========================================= */
+
+.table-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.table-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.table-card-header h3 {
+  font-size: 15px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-soft);
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.transaction-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.transaction-table tbody tr:hover {
+  background-color: var(--color-bg);
+}
+
+.amount-income {
+  color: var(--color-income);
+  font-weight: 700;
+}
+
+.amount-expense {
+  color: var(--color-expense);
+  font-weight: 700;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.delete-btn:hover {
+  color: var(--color-expense);
+}
+
+.empty-message {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  padding: 30px 0;
+}
+
+/* =========================================
+   Settings page
+   ========================================= */
+
+.settings-subtitle {
+  color: var(--color-text-soft);
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.settings-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+  max-width: 480px;
+}
+
+.settings-card h3 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.settings-card .btn {
+  margin-top: 18px;
+}
+
+.saved-message {
+  color: var(--color-income);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.dark-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.dark-mode-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dark-mode-desc {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin-top: 2px;
+}
+
+.danger-card {
+  border-color: var(--color-expense);
+}
+
+.danger-desc {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-top: 6px;
+  max-width: 360px;
+}
+
+/* Toggle switch for dark mode */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-border);
+  border-radius: 24px;
+  transition: 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+/* =========================================
+   Add Transaction Modal
+   ========================================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal-box {
+  background-color: var(--color-card);
+  border-radius: 14px;
+  padding: 26px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  font-size: 17px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text-soft);
+}
+
+.type-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-soft);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.type-btn.active[data-type="income"] {
+  background-color: var(--color-income);
+  border-color: var(--color-income);
+  color: #fff;
+}
+
+.type-btn.active[data-type="expense"] {
+  background-color: var(--color-expense);
+  border-color: var(--color-expense);
+  color: #fff;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 900px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .navbar-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transaction-table {
+    font-size: 12px;
+  }
+}

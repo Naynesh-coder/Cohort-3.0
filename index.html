@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinTrack Pro - Personal Finance Tracker</title>
+ 
+  <!-- Google font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <!-- ===================== LOGIN PAGE ===================== -->
+
+  <section id="loginPage" class="auth-page">
+    <div class="auth-box">
+      <h1 class="auth-logo">FinTrack <span>Pro</span></h1>
+      <p class="auth-subtitle">Track your money without the headache.</p>
+ 
+      <form id="loginForm">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" placeholder="Enter your username" required>
+ 
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+ 
+        <p id="loginError" class="form-error"></p>
+ 
+        <button type="submit" class="btn btn-primary btn-full">Log In</button>
+      </form>
+ 
+      <p class="auth-switch">Don't have an account? <a href="#" id="showRegisterLink">Create one</a></p>
+    </div>
+  </section>
+ 
+  <!-- ===================== REGISTER PAGE ===================== -->
+
+  <section id="registerPage" class="auth-page hidden">
+    <div class="auth-box">
+      <h1 class="auth-logo">FinTrack <span>Pro</span></h1>
+      <p class="auth-subtitle">Create an account to start tracking.</p>
+ 
+      <form id="registerForm">
+        <label for="registerName">Display Name</label>
+        <input type="text" id="registerName" placeholder="e.g. Priya Sharma" required>
+ 
+        <label for="registerUsername">Username</label>
+        <input type="text" id="registerUsername" placeholder="Choose a username" required>
+ 
+        <label for="registerPassword">Password</label>
+        <input type="password" id="registerPassword" placeholder="Choose a password" required>
+ 
+        <p id="registerError" class="form-error"></p>
+ 
+        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+      </form>
+ 
+      <p class="auth-switch">Already have an account? <a href="#" id="showLoginLink">Log in</a></p>
+    </div>
+  </section>
+ 
+  <!-- ===================== MAIN APP (shown after login) ===================== -->
+
+  <div id="appWrapper" class="hidden">
+ 
+    <!-- Navbar -->
+
+    <header class="navbar">
+      <div class="navbar-logo">FinTrack <span>Pro</span></div>
+ 
+      <nav class="navbar-links">
+        <a href="#" id="navDashboard" class="nav-link active">Dashboard</a>
+        <a href="#" id="navSettings" class="nav-link">Settings</a>
+      </nav>
+ 
+      <div class="navbar-actions">
+        <button id="openAddModalBtn" class="btn btn-primary">+ Add Transaction</button>
+        <button id="logoutBtn" class="btn btn-outline">Logout</button>
+      </div>
+    </header>
+ 
+    <!-- ===================== DASHBOARD SECTION ===================== -->
+
+    <main id="dashboardSection" class="page-section">
+ 
+      <div class="welcome-line">
+        <h2>Welcome back, <span id="welcomeName">there</span> 👋</h2>
+        <p>Here's what your money has been up to.</p>
+      </div>
+ 
+      <!-- Summary cards -->
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <p class="card-label">Current Balance</p>
+          <p class="card-value" id="balanceValue">0</p>
+        </article>
+ 
+        <article class="summary-card">
+          <p class="card-label">Total Income</p>
+          <p class="card-value income-text" id="incomeValue">0</p>
+        </article>
+ 
+        <article class="summary-card">
+          <p class="card-label">Total Expense</p>
+          <p class="card-value expense-text" id="expenseValue">0</p>
+        </article>
+ 
+        <article class="summary-card">
+          <p class="card-label">Total Transactions</p>
+          <p class="card-value" id="countValue">0</p>
+        </article>
+      </section>
+ 
+      <!-- Chart -->
+
+      <section class="chart-card">
+        <h3>Cash Flow</h3>
+        <canvas id="cashFlowChart" height="90"></canvas>
+      </section>
+ 
+      <!-- Transaction table -->
+
+      <section class="table-card">
+        <div class="table-card-header">
+          <h3>Transactions</h3>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Types</button>
+            <button class="filter-btn" data-filter="income">Income Only</button>
+            <button class="filter-btn" data-filter="expense">Expense Only</button>
+          </div>
+        </div>
+ 
+        <table class="transaction-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="transactionTableBody">
+
+            <!-- rows get filled in by script.js -->
+
+          </tbody>
+        </table>
+ 
+        <p id="emptyTableMessage" class="empty-message hidden">No transactions yet. Add your first one!</p>
+      </section>
+ 
+    </main>
+ 
+    <!-- ===================== SETTINGS SECTION ===================== -->
+
+    <main id="settingsSection" class="page-section hidden">
+ 
+      <h2>Settings</h2>
+      <p class="settings-subtitle">Manage your profile and preferences.</p>
+ 
+      <section class="settings-card">
+        <h3>Profile</h3>
+ 
+        <label for="settingsName">Display Name</label>
+        <input type="text" id="settingsName">
+ 
+        <label for="settingsCurrency">Currency</label>
+        <select id="settingsCurrency">
+          <option value="USD">USD - US Dollar ($)</option>
+          <option value="EUR">EUR - Euro (€)</option>
+          <option value="GBP">GBP - British Pound (£)</option>
+          <option value="INR">INR - Indian Rupee (₹)</option>
+          <option value="JPY">JPY - Japanese Yen (¥)</option>
+        </select>
+ 
+        <button id="saveProfileBtn" class="btn btn-primary">Save Changes</button>
+        <p id="profileSavedMsg" class="saved-message hidden">Saved!</p>
+      </section>
+ 
+      <section class="settings-card">
+        <h3>Appearance</h3>
+ 
+        <div class="dark-mode-row">
+          <div>
+            <p class="dark-mode-title">Dark Mode</p>
+            <p class="dark-mode-desc">Switch between light and dark theme.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+ 
+      <section class="settings-card danger-card">
+        <h3>Reset Data</h3>
+        <p class="danger-desc">This will permanently delete all your transactions. This cannot be undone.</p>
+        <button id="resetDataBtn" class="btn btn-danger">Reset All Data</button>
+      </section>
+ 
+    </main>
+ 
+  </div>
+ 
+  <!-- ===================== ADD TRANSACTION MODAL ===================== -->
+
+  <div id="addModalOverlay" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Add Transaction</h3>
+        <button id="closeModalBtn" class="modal-close">&times;</button>
+      </div>
+ 
+      <form id="addTransactionForm">
+ 
+        <label>Type</label>
+        <div class="type-toggle">
+          <button type="button" class="type-btn active" data-type="income" id="typeIncomeBtn">Income</button>
+          <button type="button" class="type-btn" data-type="expense" id="typeExpenseBtn">Expense</button>
+        </div>
+ 
+        <label for="transDescription">Description</label>
+        <input type="text" id="transDescription" placeholder="e.g. Grocery shopping" required>
+ 
+        <label for="transAmount">Amount</label>
+        <input type="number" id="transAmount" placeholder="0.00" min="0" step="0.01" required>
+ 
+        <label for="transDate">Date</label>
+        <input type="date" id="transDate" required>
+ 
+        <label for="transCategory">Category</label>
+        <select id="transCategory">
+          <option value="Food & Dining">Food & Dining</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Recharge & Bills">Recharge & Bills</option>
+          <option value="Petrol & Auto">Petrol & Auto</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Salary">Salary</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Other">Other</option>
+        </select>
+ 
+        <p id="transFormError" class="form-error"></p>
+ 
+        <button type="submit" class="btn btn-primary btn-full">Save Transaction</button>
+      </form>
+    </div>
+  </div>
+  
+ <!-- Chart.js from CDN -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
